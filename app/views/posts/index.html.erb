@@ -1,0 +1,28 @@
+<div class="span5">
+	<h4><%= link_to 'New Post', new_post_path%><h4>
+		<br/><br/><br/>
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post_path(post) %></h2>posted at <%= post.created_at %>
+	<span class="pull-right">
+    <%= link_to 'Edit', edit_post_path(post), :class => 'btn btn-mini btn-warning' %>
+    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' },  :class => 'btn btn-mini btn-danger' %>
+  </span>
+ 	<hr/>
+  <div class="postcontent">
+    <%= post.content.html_safe %>
+  </div>
+  <%= image_tag(post.photo, :width=>500) unless post.photo.blank? %>
+
+  <br><br>
+  <hr/>	
+
+<% end %>
+
+
+<br />
+</div>
+    <div class="span3">
+
+    </div>
+
+
